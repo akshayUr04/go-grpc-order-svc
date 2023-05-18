@@ -16,9 +16,10 @@ func Init(url string) Handler {
 	db, err := gorm.Open(postgres.Open(url), &gorm.Config{})
 
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalln(err)
 	}
 
 	db.AutoMigrate(&models.Order{})
-	return Handler{}
+
+	return Handler{db}
 }
