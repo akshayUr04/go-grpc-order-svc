@@ -6,6 +6,7 @@ option go_package="./pkg/pb";
 
 service OrderService{
   rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+  rpc OrderFromCart(OrderFromCartRequest)returns(CreateOrderResponse);
 }
 
 message CreateOrderRequest{
@@ -18,4 +19,8 @@ message CreateOrderResponse{
   int64 status = 1;
   string error = 2;
   int64 id = 3;
+}
+
+message OrderFromCartRequest{
+  int64 userId =1;
 }

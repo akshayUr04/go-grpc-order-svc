@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package cart;
+
+option go_package = "./pkg/pb";
+
+service CartService {
+    rpc FindCart(FindCartRequest)returns(FindCartResponse);
+    rpc DeleteCart(DeleteCartRequest)returns(DeleteCartResponse);
+}
+
+message FindCartRequest{
+    int64 userId = 1;
+}
+
+message FindCartData {
+	int64 ProductId  = 1;
+	int64 Total      = 2;
+	int64 Qty        = 3;
+}
+message FindCartResponse{
+    int64 status = 1;
+    string error = 2;
+    int64 total = 3;
+    repeated FindCartData data = 4;
+}
+
+message DeleteCartRequest{
+    int64 userId = 1;
+}
+
+message DeleteCartResponse{
+    int64 status = 1;
+    string error = 2;
+}

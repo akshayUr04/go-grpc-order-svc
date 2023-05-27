@@ -29,6 +29,7 @@ func main() {
 	}
 
 	productSvc := client.InitProductServiceClient(c.ProductSvcUrl)
+	clientSvc := client.InitCartServiceClient(c.CartSvcUrl)
 
 	if err != nil {
 		log.Fatalln("Failed to listing:", err)
@@ -39,6 +40,7 @@ func main() {
 	s := services.Server{
 		H:          h,
 		ProductSvc: productSvc,
+		CartSvc:    clientSvc,
 	}
 
 	grpcServer := grpc.NewServer()
